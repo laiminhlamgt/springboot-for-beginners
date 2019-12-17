@@ -26,9 +26,9 @@ public class JpaApplication implements CommandLineRunner {
     @Override
     public void run(String... args) {
         logger.info("User id 10001 -> {}", personJpaRepository.findById(10001));
+        logger.info("Inserting -> {}", personJpaRepository.insert(new Person("Tara", "Berlin", new Date())));
+        logger.info("Updating 10003 -> {}", personJpaRepository.update(new Person(10003, "Pieter", "Utrecht", new Date())));
 //        logger.info("All users -> {}", personJpaRepository.findAll());
 //        logger.info("Deleting 10002 -> No of Rows Deleted - {}", personJpaRepository.deleteById(10002));
-//        logger.info("Inserting 10004 -> {}", personJpaRepository.insert(new Person(10004, "Tara", "Berlin", new Date())));
-//        logger.info("Updating 10003 -> {}", personJpaRepository.update(new Person(10003, "Pieter", "Utrecht", new Date())));
     }
 }
