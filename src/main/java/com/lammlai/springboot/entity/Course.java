@@ -3,6 +3,7 @@ package com.lammlai.springboot.entity;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
+import java.util.StringJoiner;
 
 @Entity
 public class Course {
@@ -30,5 +31,12 @@ public class Course {
 
     public void setName(String name) {
         this.name = name;
+    }
+
+    @Override
+    public String toString() {
+        return new StringJoiner(", ", Course.class.getSimpleName() + "[", "]")
+                .add("name='" + name + "'")
+                .toString();
     }
 }
