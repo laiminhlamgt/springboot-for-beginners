@@ -25,6 +25,5 @@ public class Application implements CommandLineRunner {
     public void run(String... args) {
         Course course = repository.findById(10001L);
         logger.info("Course 10001 -> {}", course);
-        repository.deleteById(10001L);
     }
 }
