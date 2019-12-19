@@ -47,6 +47,13 @@ public class CourseRepository {
 
         Course course2 = new Course("Angular Js in 100 Steps");
         em.persist(course2);
+
+        em.flush();
+
+        course1.setName("Web Services in 100 Steps - Updated 3");
+        course2.setName("Angular Js in 100 Steps - Updated 3");
+        em.refresh(course1);
+
         em.flush();
 
         em.detach(course2);
