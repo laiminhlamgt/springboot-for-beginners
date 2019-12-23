@@ -26,6 +26,11 @@ class StudentRepositoryTest {
     EntityManager em;
 
     @Test
+    public void someTest() {
+        repository.someOperationToUnderstandPersistenceContext();
+    }
+
+    @Test
     @Transactional
     public void retrieveStudentAndPassportDetails() {
         Student student = em.find(Student.class, 20001L);
