@@ -11,8 +11,7 @@ import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.test.context.junit4.SpringRunner;
 
 import javax.persistence.EntityManager;
-
-import static org.junit.jupiter.api.Assertions.assertEquals;
+import javax.transaction.Transactional;
 
 @RunWith(SpringRunner.class)
 @SpringBootTest(classes = Application.class)
@@ -27,6 +26,7 @@ class StudentRepositoryTest {
     EntityManager em;
 
     @Test
+    @Transactional
     public void retrieveStudentAndPassportDetails() {
         Student student = em.find(Student.class, 20001L);
         logger.info("student -> {}", student);
