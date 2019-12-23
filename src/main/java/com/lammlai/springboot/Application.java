@@ -1,7 +1,7 @@
 package com.lammlai.springboot;
 
-import com.lammlai.springboot.entity.Course;
 import com.lammlai.springboot.repository.CourseRepository;
+import com.lammlai.springboot.repository.StudentRepository;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -15,7 +15,10 @@ public class Application implements CommandLineRunner {
     private Logger logger = LoggerFactory.getLogger(this.getClass());
 
     @Autowired
-    CourseRepository repository;
+    private CourseRepository courseRepository;
+
+    @Autowired
+    private StudentRepository studentRepository;
 
     public static void main(String[] args) {
         SpringApplication.run(Application.class, args);
@@ -23,6 +26,7 @@ public class Application implements CommandLineRunner {
 
     @Override
     public void run(String... args) {
-        repository.playWithEntityManager();
+//        courseRepository.playWithEntityManager();
+        studentRepository.saveStudentWithPassport();
     }
 }
