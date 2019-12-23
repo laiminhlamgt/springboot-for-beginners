@@ -1,6 +1,7 @@
 package com.lammlai.springboot.repository;
 
 import com.lammlai.springboot.Application;
+import com.lammlai.springboot.entity.Passport;
 import com.lammlai.springboot.entity.Student;
 import org.junit.jupiter.api.Test;
 import org.junit.runner.RunWith;
@@ -36,5 +37,13 @@ class StudentRepositoryTest {
         Student student = em.find(Student.class, 20001L);
         logger.info("student -> {}", student);
         logger.info("passport -> {}", student.getPassport());
+    }
+
+    @Test
+    @Transactional
+    public void retrievePassportAndAssociatedStudent() {
+        Passport passport = em.find(Passport.class, 40001L);
+        logger.info("passport -> {}", passport);
+        logger.info("student -> {}", passport.getStudent());
     }
 }
