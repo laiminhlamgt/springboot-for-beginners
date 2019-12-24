@@ -1,5 +1,7 @@
 package com.lammlai.springboot;
 
+import com.lammlai.springboot.entity.Course;
+import com.lammlai.springboot.entity.Student;
 import com.lammlai.springboot.repository.CourseRepository;
 import com.lammlai.springboot.repository.StudentRepository;
 import org.slf4j.Logger;
@@ -27,6 +29,15 @@ public class Application implements CommandLineRunner {
     @Override
     public void run(String... args) {
 //        courseRepository.playWithEntityManager();
-        studentRepository.saveStudentWithPassport();
+//        studentRepository.saveStudentWithPassport();
+//        courseRepository.addHardcodedReviewsForCourse();
+
+//        List<Review> reviews = new ArrayList<>();
+//        reviews.add(new Review("5", "Great Hands-on Stuff."));
+//        reviews.add(new Review("5", "Hatsoff."));
+//        courseRepository.addReviewsForCourse(10003L, reviews);
+
+//        studentRepository.insertHardcodedStudentAndCourse();
+        studentRepository.insertStudentAndCourse(new Student("Jack"), new Course("Microservices in 100 Steps"));
     }
 }

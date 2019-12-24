@@ -2,6 +2,7 @@ package com.lammlai.springboot.repository;
 
 import com.lammlai.springboot.Application;
 import com.lammlai.springboot.entity.Course;
+import com.lammlai.springboot.entity.Review;
 import org.junit.jupiter.api.Test;
 import org.junit.runner.RunWith;
 import org.slf4j.Logger;
@@ -10,6 +11,9 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.test.annotation.DirtiesContext;
 import org.springframework.test.context.junit4.SpringRunner;
+
+import javax.persistence.EntityManager;
+import javax.transaction.Transactional;
 
 import static org.junit.jupiter.api.Assertions.*;
 
@@ -21,6 +25,9 @@ class CourseRepositoryTest {
 
     @Autowired
     CourseRepository repository;
+
+    @Autowired
+    EntityManager em;
 
     @Test
     public void findById_basic() {
@@ -55,5 +62,21 @@ class CourseRepositoryTest {
     @DirtiesContext
     public void playWithEntityManager() {
         repository.playWithEntityManager();
+    }
+
+    @Test
+    @Transactional
+    public void retrieveReviewsForCourse() {
+        Course course = repository.findById(10001L);
+        logger.info("{}", course.getReviews());
+    }
+
+
+
+    @Test
+    @Transactional
+    public void retrieveCourseForReview() {
+        Review review = em.find(Review.class, 50001L);
+        logger.info("{}", review.getCourse());
     }
 }

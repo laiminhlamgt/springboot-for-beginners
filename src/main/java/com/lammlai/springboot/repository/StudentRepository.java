@@ -1,5 +1,6 @@
 package com.lammlai.springboot.repository;
 
+import com.lammlai.springboot.entity.Course;
 import com.lammlai.springboot.entity.Passport;
 import com.lammlai.springboot.entity.Student;
 import org.slf4j.Logger;
@@ -63,5 +64,24 @@ public class StudentRepository {
         // Database Operation 4 - update student
         student.setName("Range - updated");
         // Persistence Context (student++, passport++)
+    }
+
+    public void insertHardcodedStudentAndCourse() {
+        Student student = new Student("Jack");
+        Course course = new Course("Microservices in 100 Steps");
+        em.persist(student);
+        em.persist(course);
+
+        student.addCourse(course);
+        course.addStudent(student);
+        em.persist(student);
+    }
+
+    public void insertStudentAndCourse(Student student, Course course) {
+        student.addCourse(course);
+        course.addStudent(student);
+
+        em.persist(student);
+        em.persist(course);
     }
 }
