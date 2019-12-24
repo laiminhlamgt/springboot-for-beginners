@@ -27,6 +27,7 @@ public class Application implements CommandLineRunner {
     @Override
     public void run(String... args) {
 //        courseRepository.playWithEntityManager();
-        studentRepository.saveStudentWithPassport();
+//        studentRepository.saveStudentWithPassport();
+        courseRepository.addReviewsForCourse();
     }
 }

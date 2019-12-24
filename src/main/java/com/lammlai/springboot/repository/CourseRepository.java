@@ -1,6 +1,7 @@
 package com.lammlai.springboot.repository;
 
 import com.lammlai.springboot.entity.Course;
+import com.lammlai.springboot.entity.Review;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -43,5 +44,26 @@ public class CourseRepository {
 
         Course course2 = findById(10001L);
         course2.setName("JPA in 50 Steps - Updated");
+    }
+
+    public void addReviewsForCourse() {
+        // get the course 10003
+        Course course = findById(10003L);
+        logger.info("course.getReviews() -> {}", course.getReviews());
+
+        // add 2 reviews to it
+        Review review1 = new Review("5", "Great Hands-on Stuff.");
+        Review review2 = new Review("5", "Hatsoff.");
+
+        // setting the relationship
+        course.addReview(review1);
+        review1.setCourse(course);
+
+        course.addReview(review2);
+        review2.setCourse(course);
+
+        // save it to the database
+        em.persist(review1);
+        em.persist(review2);
     }
 }
