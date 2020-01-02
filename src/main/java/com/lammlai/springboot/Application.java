@@ -1,6 +1,7 @@
 package com.lammlai.springboot;
 
-import com.lammlai.springboot.entity.Review;
+import com.lammlai.springboot.entity.Course;
+import com.lammlai.springboot.entity.Student;
 import com.lammlai.springboot.repository.CourseRepository;
 import com.lammlai.springboot.repository.StudentRepository;
 import org.slf4j.Logger;
@@ -9,9 +10,6 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
-
-import java.util.ArrayList;
-import java.util.List;
 
 @SpringBootApplication
 public class Application implements CommandLineRunner {
@@ -33,9 +31,13 @@ public class Application implements CommandLineRunner {
 //        courseRepository.playWithEntityManager();
 //        studentRepository.saveStudentWithPassport();
 //        courseRepository.addHardcodedReviewsForCourse();
-        List<Review> reviews = new ArrayList<>();
-        reviews.add(new Review("5", "Great Hands-on Stuff."));
-        reviews.add(new Review("5", "Hatsoff."));
-        courseRepository.addReviewsForCourse(10003L, reviews);
+
+//        List<Review> reviews = new ArrayList<>();
+//        reviews.add(new Review("5", "Great Hands-on Stuff."));
+//        reviews.add(new Review("5", "Hatsoff."));
+//        courseRepository.addReviewsForCourse(10003L, reviews);
+
+//        studentRepository.insertHardcodedStudentAndCourse();
+        studentRepository.insertStudentAndCourse(new Student("Jack"), new Course("Microservices in 100 Steps"));
     }
 }
