@@ -42,4 +42,11 @@ public class JPQLTest {
         List<Course> resultList = query.getResultList();
         logger.info("select c from Course c where c.name like '%100 Steps' -> {}", resultList);
     }
+
+    @Test
+    public void jpql_courses_without_students() {
+        TypedQuery<Course> query = em.createQuery("select c from Course c where c.students is empty", Course.class);
+        List<Course> resultList = query.getResultList();
+        logger.info("Results -> {}", resultList);
+    }
 }
