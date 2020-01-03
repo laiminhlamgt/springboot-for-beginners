@@ -2,6 +2,7 @@ package com.lammlai.springboot.repository;
 
 import com.lammlai.springboot.Application;
 import com.lammlai.springboot.entity.Course;
+import com.lammlai.springboot.entity.Student;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.slf4j.Logger;
@@ -63,4 +64,15 @@ public class JPQLTest {
         List<Course> resultList = query.getResultList();
         logger.info("Results -> {}", resultList);
     }
+
+    @Test
+    public void jpql_students_with_passports_in_a_certain_pattern() {
+        TypedQuery<Student> query = em.createQuery("select s from Student s where s.passport.number like '%1234%'", Student.class);
+        List<Student> resultList = query.getResultList();
+        logger.info("Results -> {}", resultList);
+    }
+    // like
+    // between 100 and 1000
+    // is null
+    // upper, lower, trim, length
 }
