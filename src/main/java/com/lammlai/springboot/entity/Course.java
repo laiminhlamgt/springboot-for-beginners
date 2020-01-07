@@ -1,7 +1,9 @@
 package com.lammlai.springboot.entity;
 
 import org.hibernate.annotations.CreationTimestamp;
+import org.hibernate.annotations.SQLDelete;
 import org.hibernate.annotations.UpdateTimestamp;
+import org.hibernate.annotations.Where;
 
 import javax.persistence.*;
 import java.time.LocalDateTime;
@@ -15,6 +17,8 @@ import java.util.StringJoiner;
         @NamedQuery(name = "query_get_100_Step_courses", query = "select c from Course c where c.name like '%100 Steps'")
 })
 @Cacheable
+@SQLDelete(sql = "update course set is_deleted = true where id = ?")
+@Where(clause = "is_deleted = false")
 public class Course {
 
     @Id
@@ -35,6 +39,8 @@ public class Course {
 
     @CreationTimestamp
     private LocalDateTime createdDate;
+
+    private boolean isDeleted;
 
     protected Course() {
     }
