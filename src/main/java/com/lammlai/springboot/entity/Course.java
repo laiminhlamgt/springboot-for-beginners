@@ -14,6 +14,7 @@ import java.util.StringJoiner;
         @NamedQuery(name = "query_get_all_courses", query = "select c from Course c"),
         @NamedQuery(name = "query_get_100_Step_courses", query = "select c from Course c where c.name like '%100 Steps'")
 })
+@Cacheable
 public class Course {
 
     @Id
