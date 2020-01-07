@@ -15,6 +15,9 @@ public class Student {
     @Column(nullable = false)
     private String name;
 
+    @Embedded
+    private Address address;
+
     @OneToOne(fetch = FetchType.LAZY)
     private Passport passport;
 
@@ -41,6 +44,14 @@ public class Student {
 
     public void setName(String name) {
         this.name = name;
+    }
+
+    public Address getAddress() {
+        return address;
+    }
+
+    public void setAddress(Address address) {
+        this.address = address;
     }
 
     public Passport getPassport() {
