@@ -16,6 +16,7 @@ import java.util.StringJoiner;
 @Entity
 @NamedQueries(value = {
         @NamedQuery(name = "query_get_all_courses", query = "select c from Course c"),
+        @NamedQuery(name = "query_get_all_courses_join_fetch", query = "select c from Course c join fetch c.students s"),
         @NamedQuery(name = "query_get_100_Step_courses", query = "select c from Course c where c.name like '%100 Steps'")
 })
 @Cacheable
@@ -81,6 +82,10 @@ public class Course {
 
     public void removeReview(Review review) {
         this.reviews.remove(review);
+    }
+
+    public List<Student> getStudents() {
+        return students;
     }
 
     public void addStudent(Student student) {
