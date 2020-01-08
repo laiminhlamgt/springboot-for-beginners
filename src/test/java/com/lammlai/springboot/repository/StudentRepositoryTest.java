@@ -1,6 +1,7 @@
 package com.lammlai.springboot.repository;
 
 import com.lammlai.springboot.Application;
+import com.lammlai.springboot.entity.Address;
 import com.lammlai.springboot.entity.Passport;
 import com.lammlai.springboot.entity.Student;
 import org.junit.jupiter.api.Test;
@@ -37,6 +38,16 @@ class StudentRepositoryTest {
         Student student = em.find(Student.class, 20001L);
         logger.info("student -> {}", student);
         logger.info("passport -> {}", student.getPassport());
+    }
+
+    @Test
+    @Transactional
+    public void setAddressDetails() {
+        Student student = em.find(Student.class, 20001L);
+        student.setAddress(new Address("Non 101", "Some Street", "Hyderabad"));
+        em.flush();
+        logger.info("student -> {}", student);
+        logger.info("address -> {}", student.getAddress());
     }
 
     @Test
